@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/TextoGame.iml" filepath="$PROJECT_DIR$/.idea/TextoGame.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Cpsc 231/assignment 2/.idea/assignment 2.iml" filepath="$PROJECT_DIR$/../../Cpsc 231/assignment 2/.idea/assignment 2.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../../Cpsc 231/test project/.idea/test project.iml" filepath="$PROJECT_DIR$/../../Cpsc 231/test project/.idea/test project.iml" />
+    </modules>
+  </component>
+</project>
