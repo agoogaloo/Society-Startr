@@ -1,28 +1,34 @@
-import Game
+from game import Game
 from pynput import keyboard
 
+
 def on_press(key):
+    global game
     print(key)
     try:
         if key.char == 'w':
-            Game.update("u")
+            game.update("u")
         elif key.char == 's':
-            Game.update("d")
+            game.update("d")
         elif key.char == "a":
-            Game.update("l")
+            game.update("l")
         elif key.char == "d":
-            Game.update("r")
+            game.update("r")
     except AttributeError:
         if key == keyboard.Key.up:
-            Game.update("u")
+            game.update("u")
         elif key == keyboard.Key.down:
-            Game.update("d")
+            game.update("d")
         elif key == keyboard.Key.left:
-            Game.update("l")
+            game.update("l")
         elif key == keyboard.Key.right:
-            Game.update("r")
+            game.update("r")
 
-    Game.drawWorld()
+    game.drawWorld()
+
+
+game = Game()
+
 
 
 with keyboard.Listener(
