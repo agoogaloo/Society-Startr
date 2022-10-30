@@ -5,26 +5,29 @@ from pynput import keyboard
 def on_press(key):
     global game
     print(key)
+    inp = ""
     try:
         if key.char == 'w':
-            game.update("u")
+            inp ="u"
         elif key.char == 's':
-            game.update("d")
+            inp = "d"
         elif key.char == "a":
-            game.update("l")
+            inp ="l"
         elif key.char == "d":
-            game.update("r")
+            inp ="r"
     except AttributeError:
         if key == keyboard.Key.up:
-            game.update("u")
+            inp ="u"
         elif key == keyboard.Key.down:
-            game.update("d")
+            inp ="d"
         elif key == keyboard.Key.left:
-            game.update("l")
+            inp ="l"
         elif key == keyboard.Key.right:
-            game.update("r")
+            inp ="r"
 
-    game.drawWorld()
+
+    if inp!="" and game.update(inp):
+        game.drawWorld()
 
 
 game = Game()

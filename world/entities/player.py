@@ -1,10 +1,29 @@
 from world.entities.entity import Entity
 
 class Player (Entity):
-    char = " P"
-    pass
+
+    followers = 0
+    followerQueue = 0
+    prevDir = "u"
+
+
 
     def update(self, inp, level):
-        print(self.x,self.y)
-        self.move(inp,level)
+
+        moved = self.moveDir(inp,level)
+        if moved:
+            super().follow(level)
+        return moved
+
+
+
+    def addFollower(self, follower):
+        print(self.nextFollower, follower)
+        if not self.nextFollower:
+            self.nextFollower = follower
+        else:
+            self.nextFollower.addFollower(follower)
+
+        self.followers+=1
+
 

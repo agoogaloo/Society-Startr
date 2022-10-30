@@ -7,7 +7,7 @@ class Game():
 
 
     def update(self, inp):
-        self.lev.update(inp)
+        return self.lev.update(inp)
 
     def drawWorld(self):
         world = self.lev.world
