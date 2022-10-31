@@ -14,6 +14,10 @@ def on_press(key):
             inp ="l"
         elif key.char == "d":
             inp ="r"
+        elif key.char == "z":
+            inp ="z"
+        elif key.char == "r":
+            inp = "x"
     except AttributeError:
         if key == keyboard.Key.up:
             inp ="u"
@@ -26,7 +30,7 @@ def on_press(key):
         elif key == keyboard.Key.esc:
             inp ="e"
 
-
+    print(key,inp)
     if inp!="" and game.update(inp):
         game.drawWorld()
 

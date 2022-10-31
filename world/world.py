@@ -4,7 +4,7 @@ from world.level import Level
 class World():
     path = "levels/world.wld"
     keys = {
-        "w": "██",
+        "w": " ■",
         "e": "  ",
         "p": " ♀",
         "1": " 1",

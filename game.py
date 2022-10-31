@@ -31,10 +31,14 @@ class Game():
                     print(str(mems)+"/"+str(maxMem),end="")
             print("")
 
-        print("  ║ wasd/arrows→move    ║")
-        print("  ║ z→undo move         ║")
-        print("  ║ esc→exit level/game ║")
-        print("   ═════════════════════")
+        print("  ║ wasd/arrows → move ║")
+        if self.world.currentLevel is None:
+            print("  ║ esc → exit game    ║")
+        else:
+            print("  ║ z → undo           ║")
+            print("  ║ r → reset          ║")
+            print("  ║ esc → exit level   ║")
+        print("   ════════════════════")
 
 
     def getMembers(self):
