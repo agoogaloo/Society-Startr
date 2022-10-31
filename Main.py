@@ -4,7 +4,6 @@ from pynput import keyboard
 
 def on_press(key):
     global game
-    print(key)
     inp = ""
     try:
         if key.char == 'w':
@@ -24,13 +23,24 @@ def on_press(key):
             inp ="l"
         elif key == keyboard.Key.right:
             inp ="r"
+        elif key == keyboard.Key.esc:
+            inp ="e"
 
 
     if inp!="" and game.update(inp):
         game.drawWorld()
 
 
-game = Game()
+print("""
+Welcome to the secret society starting society! 
+We guarantee you your own personal 
+secret society, or your money back!
+
+Now, what do you want to name your secret society?""")
+
+name = input()
+game = Game(name)
+game.drawWorld()
 
 
 

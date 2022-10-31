@@ -1,30 +1,24 @@
 
-
-class Entity():
-    nextFollower = False
-
-    def __init__(self,x,y, char):
-        self.x=x
-        self.y=y
-        self.prevx = x
-        self.prevy = y
+class Player ():
+    def __init__(self, x, y, char):
+        self.x = x
+        self.y = y
         self.char = char
 
-    def update(self, inp, level):
-        pass
-
     def move(self, newx,newy, level):
-        if level.world[newx][newy]!=level.keys["e"]:
-            return False
+        if level.world[newx][newy]==level.keys["w"]:
+            return -1
+        elif level.world[newx][newy]!=level.keys["e"]:
+            return level.world[newx][newy]
         level.world[self.x][self.y] = level.keys["e"]
         level.world[newx][newy] = self.char
-        self.prevx = self.x
-        self.prevy = self.y
         self.x = newx
         self.y = newy
-        return True
 
-    def moveDir(self, direction, level):
+        return -1
+
+
+    def update(self, direction, level):
         if direction== "u":
             return self.move(self.x,self.y-1,level)
         elif direction== "d":
@@ -34,9 +28,6 @@ class Entity():
         elif direction == "r":
             return self.move(self.x+1,self.y,level)
 
-    def follow(self,level):
-        if self.nextFollower:
-            self.nextFollower.move(self.prevx,self.prevy,level)
 
 
 
