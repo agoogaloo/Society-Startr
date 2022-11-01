@@ -1,3 +1,5 @@
+from playsound import playsound
+
 
 class Player ():
     def __init__(self, x, y, char):
@@ -19,6 +21,7 @@ class Player ():
 
 
     def update(self, direction, level):
+        #playsound("sounds/move.wav",False)
         if direction== "u":
             return self.move(self.x,self.y-1,level)
         elif direction== "d":
@@ -27,6 +30,7 @@ class Player ():
             return self.move(self.x-1,self.y,level)
         elif direction == "r":
             return self.move(self.x+1,self.y,level)
+
 
 
 

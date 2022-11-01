@@ -1,4 +1,4 @@
-from world.entities import player, follower
+from world.entities import player, follower, sceptic
 
 
 class Level():
@@ -6,13 +6,17 @@ class Level():
         "w": "██",
         "e": "  ",
         "p": " ♀",
+        "pf":" ü",
         "f": " Ö",
+        "s": " ö",
     }
-    complete = False
-    exit = False
+
 
 
     def __init__(self, path, icon):
+        self.complete = False
+        self.exit = False
+        self.undoing = False
         self.path = path
         self.icon = icon
 
@@ -30,15 +34,22 @@ class Level():
         for i in range(len(lines)):
             lines[i]=lines[i].replace("\n","")
             for ch in lines[i]:
-                if ch == "p":
-                    self.player = player.Player(x,y,self.keys["p"])
-                    self.world[x][y]=(self.keys["p"])
-                elif ch == "f":
-                    self.entities.append(follower.Follower(x,y,self.keys["f"]))
-                    self.world[x][y]=(self.keys["f"])
-                    self.totalFollowers+=1
+                if ch in self.keys:
+                    if ch == "p":
+                        self.player = player.Player(x,y,self.keys["p"])
+                        self.world[x][y]=(self.keys["p"])
+                    elif ch == "f":
+                        self.entities.append(follower.Follower(x,y,self.keys["f"]))
+                        self.world[x][y]=(self.keys["f"])
+                        self.totalFollowers+=1
+                    elif ch == "s":
+                        self.entities.append(sceptic.Sceptic(x,y,self.keys["s"]))
+                        self.world[x][y]=(self.keys["s"])
+                        self.totalFollowers+=1
+                    else:
+                        self.world[x][y]=(self.keys[ch])
                 else:
-                    self.world[x][y]=(self.keys[ch])
+                    self.world[x][y] = (" "+ch)
                 x+=1
             y+=1
             x=0
@@ -56,20 +67,22 @@ class Level():
         if inp=="z":
             return self.undo()
 
-        self.inputs.append(inp)
-        moved = self.player.update(inp,self)
+        moved = self.player.update(inp,self, self.undoing)
 
         #updating everthing else if the player can move
         if moved:
-            if self.player.getLength() == self.totalFollowers:
-                self.complete = True
-
+            self.inputs.append(inp)
             for i in self.player.followerQueue:
                 i.update(inp, self)
 
             for i in self.entities:
                 if i not in self.player.followerQueue:
                     i.update(inp,self)
+            if self.complete:
+                self.exit = True
+            if self.player.getLength(self) == self.totalFollowers:
+                self.complete = True
+                player.levelComplete()
         return moved
 
     def reset(self):
@@ -82,11 +95,13 @@ class Level():
     def undo(self):
         inpCopy = [i for i in self.inputs]
         moved = self.reset()
+        self.undoing=True
         if not moved:
             return False
         #reinputing every input, except for the last one
         for i in range(len(inpCopy)-1):
             self.update(inpCopy[i])
+        self.undoing = False
 
         return True
 

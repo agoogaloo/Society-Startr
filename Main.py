@@ -36,16 +36,26 @@ def on_press(key):
 
 
 print("""
-Welcome to the secret society starting society! 
-We guarantee you your own personal 
-secret society, or your money back!
+   Welcome to the secret society starting service! 
+   We guarantee you your own personal 
+   secret society, or your money back!
 
-Now, what do you want to name your secret society?""")
+   Now, what do you want to name your secret society?
+
+      --Enter Name--""")
 
 name = input()
+
+print("""
+   Excellent! tell you now have a secret society, so my job is done.
+   If you some followers you'll need to go and get them yourself.
+
+
+      --Press Enter To Start--""")
+input()
+
 game = Game(name)
 game.drawWorld()
-
 
 
 with keyboard.Listener(

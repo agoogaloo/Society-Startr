@@ -1,9 +1,10 @@
 
 
 class Entity():
-    nextFollower = False
+
 
     def __init__(self,x,y, char):
+        self.nextFollower = False
         self.x=x
         self.y=y
         self.prevx = x

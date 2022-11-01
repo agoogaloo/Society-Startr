@@ -46,9 +46,9 @@ class Game():
         maxMembers = 0
         if self.world.currentLevel is None:
             members=self.world.totalFollowers
-            maxMembers = 10
+            maxMembers = 130
         else:
-            members = self.world.currentLevel.player.getLength()
+            members = self.world.currentLevel.player.getLength(self.world.currentLevel)
             maxMembers = self.world.currentLevel.totalFollowers
         return members,maxMembers
 

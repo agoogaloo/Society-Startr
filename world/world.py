@@ -4,15 +4,30 @@ from world.level import Level
 class World():
     path = "levels/world.wld"
     keys = {
+        "A": " A",
+        "D": " D",
+        "W": " W",
         "w": " ■",
         "e": "  ",
         "p": " ♀",
+        "t": "te",
+        "0": " T",
         "1": " 1",
         "2": " 2",
         "3": " 3",
         "4": " 4",
-        "5": " 5",
-        "A": " A"
+        "5": " A",
+        "6": " B",
+        "7": " C",
+        "8": " D",
+        "a": " a",
+        "b": " b",
+        "c": " c",
+        "d": " d",
+
+        "F":" !",
+        "E":" W"
+
     }
     currentLevel = None
     followers = 0
@@ -43,7 +58,7 @@ class World():
         if self.currentLevel is not None:
             moved = self.currentLevel.update(inp)
             #removing the level if it has been completed
-            if self.currentLevel.complete:
+            if self.currentLevel.complete and self.currentLevel.exit and inp:
                 for i in self.world:
                     if self.currentLevel.icon in i:
                         i[i.index(self.currentLevel.icon)]=self.keys["e"]

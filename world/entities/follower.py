@@ -1,12 +1,14 @@
 from world.entities.entity import Entity
 
 class Follower(Entity):
-    prevDir = "u"
-    following = False
-    queued = False
-    hidden = False
 
 
+    def __init__(self,x,y, char):
+        super().__init__(x,y, char)
+        self.prevDir = "u"
+        self.following = False
+        self.queued = False
+        self.hidden = False
 
     def update(self, inp, level):
         if self.hidden or self.queued:
@@ -22,7 +24,7 @@ class Follower(Entity):
         if (not self.following) and (left or right or up or down):
             self.queued = not level.player.addFollower(self)
             self.following = True
-            self.char = " ü"
+            self.char = level.keys["pf"]
 
 
 
@@ -39,10 +41,16 @@ class Follower(Entity):
         else:
             self.nextFollower.addFollower(follower)
 
-    def getLength(self):
+    def getLength(self, level):
+        if level.world[self.x][self.y]==level.keys["e"]:
+            return -1
+
         if self.nextFollower and not self.hidden:
-            return self.nextFollower.getLength() + 1
-        else:
-            return 0
+            if level.world[self.x][self.y]==level.keys["e"]:
+                print("ashfkjdhf")
+                return self.nextFollower.getLength(level)+1
+            return self.nextFollower.getLength(level) + 1
+
+        return 0
 
 
