@@ -39,7 +39,6 @@ class Player(Entity):
         if self.addedFollower:
             self.followerQueue.append(follower)
 
-            print("queing")
             return False
         # follower.x, follower.y = self.getEndLoc()
         # actually adding the dude

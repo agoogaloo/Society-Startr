@@ -60,7 +60,6 @@ class Level():
             self.exit = True
             return True
         #reseting
-        print(inp)
         if inp == "x":
             return self.reset()
         #undoing if they push undo

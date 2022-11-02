@@ -30,7 +30,6 @@ def on_press(key):
         elif key == keyboard.Key.esc:
             inp ="e"
 
-    print(key,inp)
     if inp!="" and game.update(inp):
         game.drawWorld()
 

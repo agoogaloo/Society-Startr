@@ -46,9 +46,6 @@ class Follower(Entity):
             return -1
 
         if self.nextFollower and not self.hidden:
-            if level.world[self.x][self.y]==level.keys["e"]:
-                print("ashfkjdhf")
-                return self.nextFollower.getLength(level)+1
             return self.nextFollower.getLength(level) + 1
 
         return 0
