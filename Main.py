@@ -1,3 +1,5 @@
+import os
+
 from game import Game
 from pynput import keyboard
 
@@ -35,19 +37,24 @@ def on_press(key):
 
 
 print("""
-   Welcome to the secret society starting service! 
-   We guarantee you your own personal 
-   secret society, or your money back!
-
-   Now, what do you want to name your secret society?
+    Thank you for purchasing your own secret society starter kit! 
+    You will find included robes, candles, and a brand new Society Startr™, 
+    self cleaning altar (patent pending). 
+    Enter a name for your secret society below, or upgrade to a premium membership
+    for a Society Startr™, secret society naming guide.
 
       --Enter Name--""")
 
 name = input()
-
+os.system('cls')
 print("""
-   Excellent! tell you now have a secret society, so my job is done.
-   If you some followers you'll need to go and get them yourself.
+    Congratulations, you are now the supreme leader of your very own secret society! 
+    Upgrade to a premium membership now to receive 10 loyal followers, 
+    or press enter to begin collecting followers on your own*
+    
+    *self recruited members do not carry a Society Startr Secrecy Guarantee. 
+    Society Startr Inc. accepts no liability for betrayal, disloyalty, mutiny, 
+    or other nefarious acts committed by self collected followers.
 
 
       --Press Enter To Start--""")

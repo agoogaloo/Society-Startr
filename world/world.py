@@ -25,8 +25,12 @@ class World():
         "c": " c",
         "d": " d",
 
+        "G":" e",
+        "H":"EX",
+        "I":"ex",
+
         "F":" !",
-        "E":" W"
+        "E": " W",
 
     }
     currentLevel = None
